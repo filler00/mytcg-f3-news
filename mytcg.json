@@ -1,0 +1,42 @@
+{
+    "name": "News",
+    "author": "Filler00",
+    "authorUrl": "https://filler00.com",
+    "supportUrl": "",
+    "fa-icon": "",
+    "version": "1.0",
+    "description": "A simple news and comments management system with Markdown and Twemoji support.",
+    "database": [
+        {
+            "name": "filler00_news",
+            "fields": {
+                "id": "INT NOT NULL AUTO_INCREMENT",
+                "subject": "VARCHAR(255)", 
+                "author_id": "INT NOT NULL",
+                "date": "DATE", 
+                "content": "TEXT"
+            },
+            "primary-key": "id",
+            "indexes": ["author_id"],
+            "foreign-keys": {
+                "author_id": "members(id)"
+            }
+        },
+        {
+            "name": "filler00_news_comments",
+            "fields": {
+                "id": "INT NOT NULL AUTO_INCREMENT",
+                "post_id": "INT",
+                "author_id": "INT NOT NULL",
+                "date": "DATE", 
+                "content": "TEXT"
+            },
+            "primary-key": "id",
+            "indexes": ["author_id"],
+            "foreign-keys": {
+                "post_id": "filler00_news(id)",
+                "author_id": "members(id)"
+            }
+        }
+    ]
+}
