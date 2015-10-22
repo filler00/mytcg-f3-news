@@ -9,34 +9,34 @@
     "database": [
         {
             "name": "filler00_news",
-            "fields": {
-                "id": "INT NOT NULL AUTO_INCREMENT",
-                "subject": "VARCHAR(255)", 
-                "author_id": "INT NOT NULL",
-                "date": "DATE", 
-                "content": "TEXT"
-            },
+            "fields": [
+                {"name": "id", "options": "INT NOT NULL AUTO_INCREMENT"},
+                {"name": "subject", "options": "VARCHAR(255)"},
+                {"name": "author_id", "options": "INT NOT NULL"},
+                {"name": "date", "options": "DATE"},
+                {"name": "content", "options": "TEXT"}
+            ],
             "primary-key": "id",
             "indexes": ["author_id"],
-            "foreign-keys": {
-                "author_id": "members(id)"
-            }
+            "foreign-keys": [
+                {"name": "author_id", "reference": "members(id)"}
+            ]
         },
         {
             "name": "filler00_news_comments",
-            "fields": {
-                "id": "INT NOT NULL AUTO_INCREMENT",
-                "post_id": "INT",
-                "author_id": "INT NOT NULL",
-                "date": "DATE", 
-                "content": "TEXT"
-            },
+            "fields": [
+                {"name": "id", "options": "INT NOT NULL AUTO_INCREMENT"},
+                {"name": "post_id", "options": "INT NOT NULL"},
+                {"name": "author_id", "options": "INT NOT NULL"},
+                {"name": "date", "options": "DATE"},
+                {"name": "content", "options": "TEXT"}
+            ],
             "primary-key": "id",
             "indexes": ["author_id"],
-            "foreign-keys": {
-                "post_id": "filler00_news(id)",
-                "author_id": "members(id)"
-            }
+            "foreign-keys": [
+                {"name": "post_id", "reference": "filler00_news(id)"},
+                {"name": "author_id", "reference": "members(id)"}
+            ]
         }
     ]
 }
